@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 import Image from 'next/image'
 import  loginmodel from '../public/login-model-paidby.avif'
 import { useState } from 'react';
@@ -14,33 +14,34 @@ import { login } from '../Store/userSlice';
  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    // e.preventDefault();
+    console.log('Form submitted:', { email, password });
     dispatch(login({ email, password }));
   };
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-  e.preventDefault();
+  // e.preventDefault();
   setEmail(e.target.value)
   }
 
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-  e.preventDefault();
+  // e.preventDefault();
   setPassword(e.target.value)
   }
 
   return (
     
-    <div className="grid grid-cols-2  gap-x-11 ">
+    <div className=" block  lg:grid lg:grid-cols-2  lg:gap-x-11 ">
 
         {/* This div contains the entire login asides the image  */}
-        <div className=' pl-44' > 
-          <h3 className='font-bold text-4xl pt-20 '>Login</h3>
-          <p className='py-6 text-gray-600 text-xl'>Sign-in to your Paidby account</p>
+        <div className='px-6 lg:px-0 lg:pl-44' > 
+          <h3 className='font-bold text-3xl lg:text-4xl pt-10 lg:pt-20 '>Login</h3>
+          <p className='py-4 lg:py-6 text-gray-600 text-sm lg:text-xl'>Sign-in to your Paidby account</p>
 
           <form className='block' onSubmit={handleSubmit}>
             <div className='py-4'>
           <input
-            className=" pl-6 text-left
+            className=" pl-2 lg:pl-6 text-left
              py-4  border-2 rounded-lg block w-full border-gray-300  "
             type="text"
             placeholder='Email'
@@ -61,20 +62,23 @@ import { login } from '../Store/userSlice';
           </div>
           </form>
 
-          <div className='grid grid-cols-2 pt-6'>
+          <div className=' block  lg:grid lg:grid-cols-2 pt-3 lg:pt-6'>
+          <div className='lg:hidden text-sm absolute right-6'>
+            <p>Forgot Password?</p>
+         </div> 
           <div >
-            <button className='bg-[#2EF6F6] px-14 py-3  rounded-lg ' type="submit">Login</button>
+            <button className='bg-[#2EF6F6] w-full lg:w-44 lg:px-14 py-3 mt-16 lg:mt-0 lg:my-0 rounded-lg ' type="submit">Login</button>
          </div>
-         <div className='pl-24 pt-4'>
+         <div className='hidden lg:flex pl-3 lg:pl-24 pt-4'>
             <p>Forgot Password?</p>
          </div>
          </div>
 
-         <p className='pt-10 text-sm pb-5'>Don't have an account? <span className='font-bold'>Register</span></p>
+         <p className=' flex justify-center lg:justify-start pt-10 text-sm pb-5'>Don't have an account? <span className='font-bold'>Register</span></p>
         </div>
 
         {/* The image on the Login page which is hidden for mobile screens */}
-        <div className='size-9/12 pt-6'>
+        <div className='hidden lg:block  size-9/12 pt-6'>
         <Image src={loginmodel}
          alt='Model'    />
     
