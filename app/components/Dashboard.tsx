@@ -6,7 +6,7 @@ import { RootState } from "../Store/store";
     const user = useSelector ((state: RootState) => state.user);
   return (
     <div>
-      <p>  {user.email}</p>
+      {user && <p>{user.email}</p>}
     </div>
   )
 }

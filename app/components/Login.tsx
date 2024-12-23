@@ -7,14 +7,18 @@ import { login } from '../Store/userSlice';
 import axios from 'axios';
 import Link from 'next/link';
 import Dashboard from './Dashboard';
+import { useRouter } from 'next/navigation'
 
 
  export const Login = () => {
   
   const dispatch = useDispatch(); 
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
   const [password, setPassword ] = useState('');
   const [error, setError] = useState(null);
+
  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,11 +37,7 @@ import Dashboard from './Dashboard';
         // Login successful, dispatch user data to Redux store
         dispatch(login(data.user));
         // Redirect to dashboard page
-        return (
-          <Link href="/Dashboard">
-            <a>Go to Dashboard</a>
-          </Link>
-        );
+        router.push('/Dashboard');
       } else {
         console.log('Login failed:', data.error);
         setError(data.error);
@@ -107,7 +107,7 @@ import Dashboard from './Dashboard';
          </div>
          </div>
 
-         <p className=' flex justify-center lg:justify-start pt-10 text-sm pb-5'>Don't have an account? <span className='font-bold'>Register</span></p>
+         <p className=' flex justify-center lg:justify-start pt-10 text-xs md:text-sm pb-5'>Don't have an account? <span className='font-bold text-xs md:text-sm'>Register</span></p>
         </div>
 
         {/* The image on the Login page which is hidden for mobile screens */}
