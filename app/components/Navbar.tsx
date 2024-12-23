@@ -11,26 +11,40 @@ import { useState } from 'react';
   
   return (
     
-       <div className=" flex justify-center sticky top-0 z-10 bg-[#E7FAF9] ">
+       <div className=" flex justify-around lg:justify-center sticky top-0 z-10 bg-[#E7FAF9] ">
         {/* The entire code below contains the navbar */}
         <div className='size-28 pt-8'> 
         <Image src={logo}
          alt='logo'    />
         </div>
 
-        <div className={`block lg:flex font-medium px-2 pt-5 ${isMenuOpen ? 'block' : 'hidden'}`}>
-          {/* <ul className={`md:flex md:items-center md:space-x-4 ${isMenuOpen ? 'block' : 'hidden'}`}></ul> */}
+        <nav className="hidden lg:flex font-medium px-2 pt-5 ">
+        
         <p className="  pt-4"> About Us</p>
         <p className=" px-2 pt-4 "> Use Case</p>
         <p className=" px-2 pt-4"> FAQ</p>
         <p className=" px-2 pt-4 "> Pricing</p>
         <p className=" px-2 pt-4 flex  lg:hidden "> Login</p>
-        <button  className=' flex lg:hidden bg-[#191235] px-10 py-3 text-[#2EF6F6] rounded-lg '>Create Free Account </button>
-        </div>
-        <div className="md:hidden flex items-center">
-    <button className="mobile-menu-button" onClick={handleMenuToggle}>
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+        </nav>
+
+        <div className="flex pl-44 lg:hidden">
+        <button 
+         className="mobile-menu-button" 
+         onClick={handleMenuToggle}
+         >
+      <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+            
       </svg>
     </button>
   </div>
@@ -44,11 +58,26 @@ import { useState } from 'react';
           />
         </form>
         {/* Login and create account button */}
-         <div className='pt-6'>
-            <button className='  bg-[#2EF6F6] px-10 py-3 ml-10 mr-4 rounded-lg '>Login</button>
+         <div className=' hidden lg:flex items-center  pb-2'>
+            <button className='  bg-[#2EF6F6] px-10 py-3 ml-6 mr-4 rounded-lg '>Login</button>
             <button  className=' bg-[#191235] px-10 py-3 text-[#2EF6F6] rounded-lg '>Create Free Account </button>
          </div>
 
+         {isMenuOpen && (
+        <div className="lg:hidden bg-[#E7FAF9] shadow-lg py-4 absolute top-28 left-18 w-full">
+          <nav className="flex flex-col items-center space-y-4">
+            <p className="pt-4">About Us</p>
+            <p className="px-2 pt-4">Use Case</p>
+            <p className="px-2 pt-4">FAQ</p>
+            <p className="px-2 pt-4">Pricing</p>
+            <p className="px-2 pt-4">Login</p>
+            
+            <button className="bg-[#191235] px-10 py-3 text-[#2EF6F6] rounded-lg">
+              Register
+            </button>
+          </nav>
+        </div>
+      )}
        
     </div>
   )
