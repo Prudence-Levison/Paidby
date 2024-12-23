@@ -13,12 +13,12 @@ import { useState } from 'react';
     
        <div className=" flex justify-around lg:justify-center sticky top-0 z-10 bg-[#E7FAF9] ">
         {/* The entire code below contains the navbar */}
-        <div className='size-28 pt-8'> 
+        <div className=' pl-2 lg:pl-0  pt-12 size-32 lg:size-28 lg:pt-10'> 
         <Image src={logo}
          alt='logo'    />
         </div>
 
-        <nav className="hidden lg:flex font-medium px-2 pt-5 ">
+        <nav className="hidden lg:flex text-lg  font-medium px-2 pt-6 ">
         
         <p className="  pt-4"> About Us</p>
         <p className=" px-2 pt-4 "> Use Case</p>
@@ -52,14 +52,14 @@ import { useState } from 'react';
         {/* The form which handles the input field ie the contract ID which the user should input onces a contract is signed */}
         <form className='pt-6'>
         <input
-            className=" hidden lg:block mb-4 border-2 text-left  border-black rounded-lg px-20 py-3"
+            className=" hidden lg:block mb-4 border-2 text-lg  border-black rounded-lg px-20 py-3"
             type=""
             placeholder='Enter your Contract ID'
           />
         </form>
         {/* Login and create account button */}
          <div className=' hidden lg:flex items-center  space-x-4 pb-2'>
-            <button className='  bg-[#2EF6F6] px-12  text-lg py-3 ml-10  rounded-lg '>Login</button>
+            <button className='  bg-[#2EF6F6] px-12  text-lg py-3 ml-7  rounded-lg '>Login</button>
             <button  className=' bg-[#191235] px-10 py-3 text-lg text-[#2EF6F6] rounded-lg '>Create Free Account </button>
          </div>
 
