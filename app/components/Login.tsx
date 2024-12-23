@@ -4,20 +4,53 @@ import  loginmodel from '../public/login-model-paidby.avif'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../Store/userSlice';
+import axios from 'axios';
+import Link from 'next/link';
+import Dashboard from './Dashboard';
 
 
  export const Login = () => {
   
   const dispatch = useDispatch(); 
   const [email, setEmail] = useState('');
-  const [password, setPassword ] = useState('')
+  const [password, setPassword ] = useState('');
+  const [error, setError] = useState(null);
  
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // e.preventDefault();
-    console.log('Form submitted:', { email, password });
-    dispatch(login({ email, password }));
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('https://api-dev.paidby.app/auth/login', {
+        // email,
+        // password,
+        email: 'henry042@team707738.testinator.com',
+        password: 'Test123!',
+      });
+
+      const data = response.data;
+
+      if (data.success) {
+        // Login successful, dispatch user data to Redux store
+        dispatch(login(data.user));
+        // Redirect to dashboard page
+        return (
+          <Link href="/Dashboard">
+            <a>Go to Dashboard</a>
+          </Link>
+        );
+      } else {
+        console.log('Login failed:', data.error);
+        setError(data.error);
+      }
+    } catch (error) {
+      console.error('Error occurred:', error);
+    }
   };
+
+    
+  //   console.log('Form submitted:', { email, password });
+  //   dispatch(login({ email, password }));
+  // };
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
   // e.preventDefault();
