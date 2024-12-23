@@ -58,9 +58,9 @@ import { useState } from 'react';
           />
         </form>
         {/* Login and create account button */}
-         <div className=' hidden lg:flex items-center  pb-2'>
-            <button className='  bg-[#2EF6F6] px-10 py-3 ml-6 mr-4 rounded-lg '>Login</button>
-            <button  className=' bg-[#191235] px-10 py-3 text-[#2EF6F6] rounded-lg '>Create Free Account </button>
+         <div className=' hidden lg:flex items-center  space-x-4 pb-2'>
+            <button className='  bg-[#2EF6F6] px-12  text-lg py-3 ml-10  rounded-lg '>Login</button>
+            <button  className=' bg-[#191235] px-10 py-3 text-lg text-[#2EF6F6] rounded-lg '>Create Free Account </button>
          </div>
 
          {isMenuOpen && (
