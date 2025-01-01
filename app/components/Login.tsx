@@ -18,7 +18,7 @@ export const Login = () => {
     e.preventDefault();
     try {
       const { data } = await dispatch(apiLogin({ email, password })).unwrap();
-      router.push("/Dashboard");
+      router.push("/dashboard");
       console.log(data?.data?.legacy_v2);
     } catch (error) {
       console.log(error);

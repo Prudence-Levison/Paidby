@@ -3,14 +3,14 @@ import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import { Provider } from "react-redux";
 import { store } from "./Store/store";
-import Dashboard from "./components/Dashboard";
+// import Dashboard from "./dashboard/page";
 
 export default function Page() {
   return (
     <Provider store={store}>
       <Navbar />
       <Login />
-      <Dashboard />
+      {/* <Dashboard /> */}
     </Provider>
   );
 }
