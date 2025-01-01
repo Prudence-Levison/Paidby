@@ -5,14 +5,15 @@ import { store } from "../Store/store";
 
 
  export const Dashboard = () => {
-    // const user = useSelector ((state: RootState) => state.user);
+    const user = useSelector ((state: RootState) => state.user);
   return (
-    // <Provider store={store}>
+    <Provider store={store}>
     <div>
       <p>Hi</p>
-      {/* {user && <p>{user.email}  Hiiii, You have successfully logged in</p>} */}
+      <p>hello</p>
+      {user && <p>{user.email}  Hiiii, You have successfully logged in</p>}
     </div>
-    // </Provider>
+     </Provider>
   )
 }
 
