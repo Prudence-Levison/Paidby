@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../Store/store';
 import { getNotifications } from '../request/getNotification';
 import Dashnavbar from '../components/Dashnavbar';
-import Sidebar from '../components/Sidebar';
 
 interface Notification {
 	id: number;
@@ -38,7 +37,6 @@ export const Dashboard = () => {
 		
 		<div>
 			<Dashnavbar />
-			<Sidebar />
 			<h1>Notifications</h1>
 			<table>
 				<thead>
