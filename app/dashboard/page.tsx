@@ -4,11 +4,10 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../Store/store';
 import { getNotifications } from '../request/getNotification';
 import Dashnavbar from '../components/Dashnavbar';
+import Sidebar from '../components/Sidebar';
 
 interface Notification {
 	id: number;
-	message: string;
-	timestamp: string;
 	body: string;
 }
 
@@ -35,28 +34,31 @@ export const Dashboard = () => {
 
 	return (
 		
-		<div>
+		<div >
 			<Dashnavbar />
-			<h1>Notifications</h1>
+			<div className='flex'>
+			<Sidebar />
+			<div className='flex-grow bg-[#EEF3EE]' >
 			<table>
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Message</th>
-						<th>Timestamp</th>
+						<th className='pt-10 text-left pl-10 text-3xl'>Dashboard</th>
+					
 					</tr>
 				</thead>
-				<tbody>
+				<tbody className='lg  '> 
 					{notifications.map((notification: Notification) => (
 						<tr key={notification.id}>
-							<td>{notification.body}</td>
-							<td>{notification.message}</td>
-							<td>{notification.timestamp}</td>
+
+							<td  className=' w-full  pt-10 text-left pl-10 py-0.5 text-lg'>{notification.body}</td>
+						
 						</tr>
 					))}
 				</tbody>
 			</table>
 		</div>
+		</div>
+	</div>
 	);
 };
 
