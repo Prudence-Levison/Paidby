@@ -53,7 +53,7 @@ export const userSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(apiLogin.rejected, (state, { error }) => {
-      console.error(error);
+      // console.error(error);
       state.isLoggedIn = false;
       state.isLoading =true
     });

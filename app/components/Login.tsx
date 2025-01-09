@@ -6,13 +6,14 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { AppDispatch } from "../Store/store";
 import { apiLogin } from "../request/auth";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import Button from "./Buttonprop";
 
 
 export const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,14 +25,18 @@ export const Login = () => {
 	setLoading(true);
     try {
       const { data } = await dispatch(apiLogin({ email, password })).unwrap();
+      toast.success('Login successful!');
       router.push("/dashboard");
       window.localStorage.setItem(
         "user",
         JSON.stringify(data?.data?.legacy_v2)
       );
       console.log(data?.data?.legacy_v2);
-    } catch (error) {
+    } catch (error :any) {
+      toast.error(error.message || 'Invalid email or password'); 
       console.log(error);
+    }finally {
+      setLoading(false);
     }
   };
   
