@@ -115,18 +115,6 @@ export const Login = () => {
           </div>
         </form>
 
-        {/* <div className=' block  lg:grid lg:grid-cols-2 pt-3 lg:pt-6'>
-          <div className='lg:hidden text-sm absolute right-6'>
-            <p>Forgot Password?</p>
-         </div> 
-          <div >
-            <button className='bg-[#2EF6F6] w-full lg:w-44 lg:px-14 py-3 mt-16 lg:mt-0 lg:my-0 rounded-lg ' type="submit">Login</button>
-         </div>
-         <div className='hidden lg:flex pl-3 lg:pl-32 pt-4'>
-            <p>Forgot Password?</p>
-         </div>
-         </div> */}
-
         <p className=" flex justify-center lg:justify-start pt-10 lg:pt-14 text-xs md:text-base pb-5">
           Don't have an account?{" "}
           <span className="font-bold text-xs pl-0 lg:pl-2 md:text-base">
