@@ -15,8 +15,7 @@ interface Notification {
 	created_at: string; 
 	title: string
 	meta_data: any;
-    icon_type: string;
-    has_read: boolean;
+    icon_type: string
 }
 
 const accessTokenValue =
@@ -66,49 +65,54 @@ export const Dashboard = () => {
 			  <Dashnavbar />
 			  <div className="flex">
 				<Sidebar />
-				<div className="flex-grow bg-[#EEF3EE]">
+				<div className="flex-grow bg-[#EEF3EE] overflow-x-auto">
 				  {loading ? (
-					<div className="flex justify-center pt-44">
-					  <div className="spinner-border animate-spin inline-block pt-10 w-8 h-8 border-4 border-black rounded-full text-black" role="status">
+					<div className="flex justify-center h-screen pt-44">
+						            <div className=" animate-spin h-5 w-3  aspect-square transition duration-300  bg-black rounded-full ml-2 "></div>
+            <div className=" animate-spin h-5 w-3 transition duration-700 border-0 bg-black   rounded-full ml-2"></div>
+            <div className=" animate-spin h-5 w-3 transition   border-0 bg-black rounded-full  duration-1000 ml-2"></div>
+		
 						<span className="sr-only">Loading...</span>
 					  </div>
-					</div>
+					
 				  ) : (
-					<table>
+					<table className="table-auto w-full divide-y lg:divide-y-0">
 					  <thead>
 						<tr>
-						  <th className="pt-10 pl-10 text-3xl">Dashboard</th>
+						  <th className=" pt-4 lg:pt-10 pl-3 lg:pl-10 flex justify-start text-3xl">Dashboard</th>
 						</tr>
-						<tr>
-						  <th className="w-8">Select</th>
-						  <th>Title</th>
-						  <th>Body</th>
-						  <th>Date & Time</th>
+						<tr className="" >
+						  <th className=' hidden lg:flex pt-10 pl-3 lg:pl-10 justify-start' >Title</th>
+				         <th className='pt-10 text-left lg:text-center pl-3 lg:pl-0 text-lg lg:text-base '>Body</th>
+						  <th className=' hidden lg:flex pt-10 '>Date&Time</th>
+						  <th className='pt-10 '>Select</th>
 						</tr>
 					  </thead>
 					  <tbody>
 						{notifications.map((notification: Notification) => (
-						  <tr key={notification.id} onClick={() => handleRowClick(notification)}>
-							<td className="pt-10 pl-10 py-0.5 w-8">
+						  <tr 
+						  key={notification.id} onClick={() => handleRowClick(notification)}>
+							
+							<td className="  hidden lg:flex pt-4 lg:pt-10 pl-3 lg:pl-10 left py-0.5 text-lg whitespace-norm">
+							  <span className="truncate font-bold ">{notification.title}</span>
+							</td>
+							<td className="pt-4  text-sm lg:text-lg lg:pt-10 text-left lg:text-center pl-3 lg:pl-10 py-0.5  break-words whitespace-norm">
+							  <span className="truncate">{notification.body}</span>
+							</td>
+							<td className="pt-4  hidden lg:flex lg:pt-10 text-left py-0.5 text-lg whitespace-norm">
+							  {notification.created_at ? (
+								new Date(notification.created_at).toLocaleString()
+							  ) : (
+								'No date available'
+							  )}
+							</td>
+							<td className="pt-10 pl-10 py-0.5 pr-5 w-8">
 							  <input
 								type="checkbox"
 								checked={checkedNotifications[notification.id]}
 								onChange={() => handleCheckboxChange(notification)}
 								aria-label={`Checkbox for notification ${notification.id}`}
 							  />
-							</td>
-							<td className="pt-10 text-left py-0.5 text-lg">
-							  <span className="truncate">{notification.title}</span>
-							</td>
-							<td className="pt-10 text-left py-0.5 text-lg">
-							  <span className="truncate">{notification.body}</span>
-							</td>
-							<td className="pt-10 text-left py-0.5 text-lg">
-							  {notification.created_at ? (
-								new Date(notification.created_at).toLocaleString()
-							  ) : (
-								'No date available'
-							  )}
 							</td>
 						  </tr>
 						))}
