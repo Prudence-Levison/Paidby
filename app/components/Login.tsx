@@ -9,6 +9,7 @@ import { apiLogin } from "../request/auth";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import Button from "./Buttonprop";
+import { useEffect } from "react";
 
 
 export const Login = () => {
@@ -18,7 +19,6 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,7 +26,9 @@ export const Login = () => {
     try {
       const { data } = await dispatch(apiLogin({ email, password })).unwrap();
       toast.success('Login successful!');
-      router.push("/dashboard");
+      setTimeout(() => {
+        router.push('/dashboard');
+      }, 3000); // Redirect after 3 seconds
       window.localStorage.setItem(
         "user",
         JSON.stringify(data?.data?.legacy_v2)
@@ -40,11 +42,6 @@ export const Login = () => {
     }
   };
   
-
-  //   console.log('Form submitted:', { email, password });
-  //   dispatch(login({ email, password }));
-  // };
-
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     // e.preventDefault();
     setEmail(e.target.value);

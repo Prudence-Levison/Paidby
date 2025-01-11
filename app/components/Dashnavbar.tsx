@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../Store/userSlice'
 import { logout } from "../Store/userSlice";
+import Button from "./Buttonprop";
 
 
 export const Dashnavbar = () => {
@@ -30,7 +31,7 @@ export const Dashnavbar = () => {
 
   return (
     <div>
-    <div className="flex justify-center lg:justify-between px-0 lg:px-6 sticky top-0 z-10 bg-[#E7FAF9]">
+    <div className="flex h-28 w-full justify-center lg:justify-between px-0 lg:px-6 sticky top-0 z-10 bg-[#E7FAF9]">
       {/* The entire code below contains the navbar */}
       <div className="pl-2 hidden lg:block lg:pl-0 pt-14  size 38 lg:size-32  lg:pt-10">
         <Image src={logo} alt="logo" />
@@ -42,7 +43,7 @@ export const Dashnavbar = () => {
           </svg>
         </button>
       </div>
-      <div className="pl-4  pt-10 block lg:hidden  size-28  ">
+      <div className="pl-4  pt-12 block lg:hidden  size-44  ">
         <Image src={logo} alt="logo" />
       </div>
       {/* The form which handles the input field ie the contract ID which the user should input onces a contract is signed */}
@@ -62,14 +63,17 @@ export const Dashnavbar = () => {
       </div>
       {/* <div><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" className="text-2xl cursor-pointer" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></div> */}
       
-      <div className="hidden lg:flex  px-2 pr-20 pt-10 text-lg  pb-2">
+      <div className="hidden lg:flex  px-2  pr-2 lg:pr-20 pt-10 text-lg  pb-2">
         <h1>Welcome, {first_name} {last_name}!</h1>
     
       </div>
-      <button 
+      <div className="py-9">
+      <Button 
         onClick={handleLogout}
-        className="bg-[#2EF6F6] hidden md:block my-10 px-12 py-2 rounded-lg">Logout</button>
-    
+        type="button"
+        loading={false}  
+        className="bg-[#2EF6F6] hidden md:block  px-12 py-2 rounded-lg">Logout</Button>
+    </div>
       {isMenuOpen && (
         <div className="lg:hidden bg-[#E7FAF9] shadow-lg py-4 absolute top-28 left-18 w-full">
           <nav className="flex flex-col items-center space-y-4">

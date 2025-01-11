@@ -12,11 +12,11 @@ export const Navbar = () => {
   return (
     <div className=" flex justify-around lg:justify-center sticky top-0 z-10 bg-[#E7FAF9] ">
       {/* The entire code below contains the navbar */}
-      <div className=" pl-2 lg:pl-0  pt-12 size-32 lg:size-28 lg:pt-10">
+      <div className=" pl-2 lg:pl-0  pt-12 size-32 lg:size-38 lg:pt-10">
         <Image src={logo} alt="logo" />
       </div>
 
-      <nav className="hidden lg:flex text-lg   font-medium px-2 pt-6 ">
+      <nav className="hidden lg:flex text-lg  lg:pl-3  font-medium px-2 pt-7 ">
         <p className="  pt-4"> About Us</p>
         <p className=" px-2 pt-4 "> Use Case</p>
         <p className=" px-2 pt-4"> FAQ</p>
@@ -43,7 +43,7 @@ export const Navbar = () => {
       </div>
 
       {/* The form which handles the input field ie the contract ID which the user should input onces a contract is signed */}
-      <form className="pt-6">
+      <form className="pt-7">
         <input
           className=" hidden lg:block mb-4 bg-white border-2 text-lg  border-black rounded-lg px-20 py-3"
           type=""

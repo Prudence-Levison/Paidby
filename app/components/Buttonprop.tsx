@@ -6,11 +6,12 @@ interface ButtonProps {
   className: string;
   type: 'submit' | 'button';
   loading: boolean;
+  onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, className, type, loading }) => {
+export const Button: React.FC<ButtonProps> = ({ children, className, type,  onClick, loading }) => {
     return (
-      <button type={type} className={className}>
+      <button type={type} onClick={onClick} className={className}>
         {loading ? (
           <div className="flex items-center justify-center">
             <div className=" animate-spin h-5 w-3  aspect-square transition duration-300  bg-black rounded-full ml-2 "></div>
