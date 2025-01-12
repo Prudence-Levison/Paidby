@@ -21,7 +21,13 @@ interface Notification {
 const accessTokenValue =
 	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJoZW5yeTA0MkB0ZWFtNzA3NzM4LnRlc3RpbmF0b3IuY29tIiwic3RhZmZfZW1haWwiOm51bGwsInN0YWZmX2lkIjpudWxsLCJhY2NvdW50X3R5cGUiOiJJTkRJVklEVUFMIiwiYWNjb3VudF9tb2RlIjoiUkVHSVNURVJFRCIsImlhdCI6MTczNTc2MDA3MiwiZXhwIjoxNzM1OTMyODcyfQ.CfdqnIsP9xit6pvULxzNISdK_pruYtWi9oUKR4T248A';
 	
-export const Dashboard = () => {
+	if (!localStorage.getItem('user')) {
+		const router = useRouter();
+		router.push('/');
+		
+	  }
+	
+	export const Dashboard = () => {
 	const [notifications, setNotifications] = useState<Notification[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [accessToken, setAccessToken] = useState('');
@@ -33,13 +39,18 @@ export const Dashboard = () => {
   const pathname = usePathname();
 
     const storedAccessToken = localStorage.getItem('accessToken');
+
+
+	
+	  
+	  
 	const fetchNotifications = async () => {
 		setLoading(true);
 		try {
 			const response = await dispatch(getNotifications()).unwrap();
 			setNotifications(response?.data?.data?.legacy_v2?.data);
 		  } catch (error: any) {
-			console.error(error);
+			console.log(error);
 		  } finally {
 			setLoading(false);
 		  }
@@ -47,7 +58,8 @@ export const Dashboard = () => {
 		useEffect(() => {
 			fetchNotifications();
 		  }, []);
-
+          
+		  
 
 		  const handleRowClick = (notification: Notification) => {
 			setSelectedNotification(notification);
