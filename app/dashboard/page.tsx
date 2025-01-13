@@ -7,6 +7,7 @@ import Dashnavbar from '../components/Dashnavbar';
 import Sidebar from '../components/Sidebar';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import Protected from '../hoc/Protected'
 
 
 interface Notification {
@@ -21,11 +22,6 @@ interface Notification {
 const accessTokenValue =
 	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJoZW5yeTA0MkB0ZWFtNzA3NzM4LnRlc3RpbmF0b3IuY29tIiwic3RhZmZfZW1haWwiOm51bGwsInN0YWZmX2lkIjpudWxsLCJhY2NvdW50X3R5cGUiOiJJTkRJVklEVUFMIiwiYWNjb3VudF9tb2RlIjoiUkVHSVNURVJFRCIsImlhdCI6MTczNTc2MDA3MiwiZXhwIjoxNzM1OTMyODcyfQ.CfdqnIsP9xit6pvULxzNISdK_pruYtWi9oUKR4T248A';
 	
-	if (!localStorage.getItem('user')) {
-		const router = useRouter();
-		router.push('/');
-		
-	  }
 	
 	export const Dashboard = () => {
 	const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -73,7 +69,7 @@ const accessTokenValue =
 		
 
 		  return (
-			<div>
+			<Protected>
 			  <Dashnavbar />
 			  <div className="flex">
 				<Sidebar />
@@ -148,7 +144,7 @@ const accessTokenValue =
 				  </div>
 				</div>
 			  )}
-			</div>
+			</Protected>
 		  );
 		  
 	}

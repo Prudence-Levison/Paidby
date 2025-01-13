@@ -24,9 +24,11 @@ export const Dashnavbar = () => {
   const { first_name, last_name, email } = user.user;
 
   const handleLogout = () => {
-    dispatch(logout());
-    window.location.href = "/";
-  };
+		dispatch(logout());
+		window.localStorage.removeItem('user');
+		window.location.href = '/';
+	};
+
 
 
   return (
