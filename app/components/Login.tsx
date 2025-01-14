@@ -9,7 +9,12 @@ import { apiLogin } from "../request/auth";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import Button from "./Buttonprop";
-import { useEffect } from "react";
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+type FormFields = {
+  email: string;
+  password: string;
+}
 
 
 export const Login = () => {
@@ -18,10 +23,11 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const { register, handleSubmit, setError, formState:{errors , isSubmitting}} = useForm<FormFields>();
 
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const  onSubmit: SubmitHandler<FormFields> = async (data) => {
+  
 	setLoading(true);
     try {
       const { data } = await dispatch(apiLogin({ email, password })).unwrap();
@@ -36,6 +42,9 @@ export const Login = () => {
       console.log(data?.data?.legacy_v2);
     } catch (error :any) {
       toast.error(error.message || 'Invalid email or password'); 
+      setError("email",{
+        message: "This email is already taken "
+    })
       console.log(error);
     }finally {
       setLoading(false);
@@ -68,9 +77,21 @@ export const Login = () => {
           Sign-in to your Paidby account
         </p>
 
-        <form className="block" onSubmit={handleSubmit}>
+        <form className="block" onSubmit={handleSubmit(onSubmit)}>
           <div className="py-4">
-            <input
+            <input 
+             {...register("email", {
+              required: "Email is required",
+              validate: (value) => {
+                  if (!value.includes("@")){
+                      return "Email must include @";
+                  }
+                  return true;
+              },
+            }
+            
+      
+            )}
               className=" pl-2 lg:pl-6 text-left
              py-4  border-2 rounded-lg block w-full bg-white border-gray-300  "
               type="text"
@@ -78,10 +99,18 @@ export const Login = () => {
               value={email}
               onChange={handleEmail}
             />
+            {errors.email && <div className='text-red-500'>{errors.email.message}</div>}
           </div>
 
           <div className="py-4">
-            <input
+            <input 
+             {...register("password", {
+              required: "Password is required",
+              minLength: {
+                  value : 8,
+                  message: "Password must have at least 8 characters",
+              },
+            })}
 
               className=" pl-6 text-left
              py-4  border-2 rounded-lg block w-full bg-white !important focus:bg-white active:bg-white border-gray-300"
@@ -90,6 +119,7 @@ export const Login = () => {
               value={password}
               onChange={handlePassword}
             />
+            {errors.password && <div className='text-red-500'>{errors.password.message}</div>}
           </div>
           <div className=" block  lg:grid lg:grid-cols-2 pt-3 lg:pt-6">
             <div className="lg:hidden text-sm absolute right-6">
