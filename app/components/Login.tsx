@@ -43,7 +43,7 @@ export const Login = () => {
     } catch (error :any) {
       toast.error(error.message || 'Invalid email or password'); 
       setError("email",{
-        message: "This email is already taken "
+        message: "This email is not valid "
     })
       console.log(error);
     }finally {

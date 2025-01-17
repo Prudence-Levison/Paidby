@@ -91,7 +91,7 @@ const accessTokenValue =
 						</tr>
 						<tr className="" >
 						  <th className=' hidden lg:flex pt-10 pl-3 lg:pl-10 justify-start' >Title</th>
-				         <th className='pt-10 text-left lg:text-center pl-3 lg:pl-0 text-lg lg:text-base '>Body</th>
+				         <th className='pt-10 text-left  pl-3 lg:pl-20 text-lg lg:text-base '>Body</th>
 						  <th className=' hidden lg:flex pt-10 '>Date&Time</th>
 						  <th className='pt-10 '>Select</th>
 						</tr>
@@ -104,7 +104,7 @@ const accessTokenValue =
 							<td className="  hidden lg:flex pt-4 lg:pt-10 pl-3 lg:pl-10 left py-0.5 text-lg whitespace-norm">
 							  <span className="truncate font-bold ">{notification.title}</span>
 							</td>
-							<td className="pt-4  text-sm lg:text-lg lg:pt-10 text-left lg:text-center pl-3 lg:pl-10 py-0.5  break-words whitespace-norm">
+							<td className="pt-4  text-sm lg:text-lg lg:pt-10 text-left  pl-3 lg:pl-10 py-0.5  break-words whitespace-norm">
 							  <span className="truncate">{notification.body}</span>
 							</td>
 							<td className="pt-4  hidden lg:flex lg:pt-10 text-left py-0.5 text-lg whitespace-norm">
