@@ -7,8 +7,8 @@ import Dashnavbar from '../components/Dashnavbar';
 import Sidebar from '../components/Sidebar';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import Protected from '../hoc/Protected'
-
+import dynamic from 'next/dynamic';
+const Protected = dynamic(() => import('../hoc/Protected'), { ssr: false });
 
 interface Notification {
 	id: number;
