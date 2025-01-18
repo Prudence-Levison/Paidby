@@ -23,7 +23,7 @@ const accessTokenValue =
 	'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJoZW5yeTA0MkB0ZWFtNzA3NzM4LnRlc3RpbmF0b3IuY29tIiwic3RhZmZfZW1haWwiOm51bGwsInN0YWZmX2lkIjpudWxsLCJhY2NvdW50X3R5cGUiOiJJTkRJVklEVUFMIiwiYWNjb3VudF9tb2RlIjoiUkVHSVNURVJFRCIsImlhdCI6MTczNTc2MDA3MiwiZXhwIjoxNzM1OTMyODcyfQ.CfdqnIsP9xit6pvULxzNISdK_pruYtWi9oUKR4T248A';
 	
 	
-	export const Dashboard = () => {
+	 const Dashboard = () => {
 	const [notifications, setNotifications] = useState<Notification[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [accessToken, setAccessToken] = useState('');
@@ -149,4 +149,6 @@ const accessTokenValue =
 		  
 	}
 
-export default Dashboard;
+	export default function Page() {
+		return <Dashboard />;
+	  }
