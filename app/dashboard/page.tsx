@@ -33,12 +33,7 @@ const accessTokenValue =
 	const dispatch = useDispatch<AppDispatch>();
 	const router = useRouter();
   const pathname = usePathname();
-
-    const storedAccessToken = localStorage.getItem('accessToken');
-
-
-	
-	  
+ 
 	  
 	const fetchNotifications = async () => {
 		setLoading(true);
