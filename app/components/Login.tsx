@@ -45,6 +45,15 @@ export const Login = () => {
       setError("email",{
         message: "This email is not valid "
     })
+    if (error.message === 'Email must contain .com') {
+      setError("email", { message: "Email must contain .com" });
+    } else if (error.message === 'Invalid email address') {
+      setError("email", { message: "Invalid email address" });
+    } else if (error.message === 'Email does not exist') {
+      setError("email", { message: "Email does not exist, please sign up" });
+    } else {
+      setError("email", { message: "Failed to send request, please try again" });
+    }
       console.log(error);
     }finally {
       setLoading(false);
@@ -85,9 +94,20 @@ export const Login = () => {
               validate: (value) => {
                   if (!value.includes("@")){
                       return "Email must include @";
-                  }
-                  return true;
+                  } else if (!value.includes(".com"))
+                    {
+                      return "Email must contain .com";
+                    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+                      return "Rejected";
+                    } else {
+                      return true;
+                    }
               },
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Failed to send request, please try again"
+              }
+              
             }
             
       
