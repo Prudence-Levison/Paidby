@@ -103,10 +103,10 @@ export const Login = () => {
                       return true;
                     }
               },
-              pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "Failed to send request, please try again"
-              }
+              // pattern: {
+              //   value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              //   message: "Failed to send request, please try again"
+              // }
               
             }
             
